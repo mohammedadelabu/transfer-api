@@ -1,16 +1,7 @@
-# week-9-node
-
-## 1. Implement this task using MongoDB
-
-### Setup
-
-1. Your are required to use `TypeScript` for the task and build the APIs (endpoints) with `express`
-2. Use and setup the project with `Yarn`
-
 ## Problem Description:
 
 Imagine you are asked to develop a transfer service with APIs to transfer money between two accounts
-You application is expected to have the following database structure
+My application have the following database structure
 
 - COLLECTION 1 - transactions
   - reference (unique)
@@ -35,8 +26,8 @@ You application is expected to have the following database structure
   - email (unique)
   - phone number (unique)
 
-The transaction Collection registers any transaction in an account (ie. today I paid N2000 for a movie with my card), the balances table represents the account balance of customers (ie. I have N50k in my bank account). If a sender is trying to make a transaction of an amount of money more than his current balance, an error should be returned indicating insufficient funds
-The API you are to develop should be able to handle a transfer request of the form below and updates the transactions/balances table accordingly.
+The transaction Collection registers any transaction in an account (ie. today I paid N2000 for a movie with my card), the balances table represents the account balance of customers (ie. I have N50k in my bank account). If a sender is trying to make a transaction of an amount of money more than his current balance, an error would be returned indicating insufficient funds
+The API can handle a transfer request of the form below and updates the transactions/balances table accordingly.
 
 ```
 {
@@ -47,7 +38,7 @@ The API you are to develop should be able to handle a transfer request of the fo
 }
 ```
 
-### Endpoints to test
+### Endpoints I used
 
 | Method | Endpoint                           | Enable a user to:                                            |
 | :----- | :--------------------------------- | :----------------------------------------------------------- |
@@ -63,24 +54,21 @@ The API you are to develop should be able to handle a transfer request of the fo
 | GET.   | /transaction/debit/:accountNumber  | gets all debit transactions of a particular user             |
 
 ## Clarification
-- implement pagination, with limit of 5 values for each page
-- Create Authentication and Authorization for users using a middleware function
-- Implement Validation for incoming request using Joi
+I implemented the following:
+-  pagination, with limit of 5 values for each page
+-  Authentication and Authorization for users using a middleware function
+-  Validation for incoming request using Joi
 - Only registered users can access all endpoints
-- Use mongoDB-compass for local development
+- I used mongoDB-compass for local development
 
-## Test coverage (Test is mandatory - no test equals 0 (zero) marks):
+## Test coverage 
 
-- Make sure you write test to cover your application using supertest
-- Test your database using mongodb-memory-server
-- Test all endpoints (GET, POST, PUT, DELETE)
+- I wrote test to cover the application using supertest
+- I tested my database using mongodb-memory-server
+- I tested all endpoints (GET, POST, PUT, DELETE)
 
 ## Documentation
-- document your API with postman
+- I documented my API with postman
 
 ## Hosting
-- Host your application on Heroku
-
-
-## 2. Mongo Aggregation Exercise.
-- Go through the readme file in the Folder `MongoAggregation`
+- I host the application on Heroku
