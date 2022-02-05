@@ -14,6 +14,7 @@ import indexRouter from './routes/index';
 // import usersRouter from './routes/users';
 import balanceRouter from './routes/balance'
 import authRouter from './routes/auth'
+// import homeRouter from './routes/home'
 // import error404 from './errors/error404'
 // import errorHandler from './middleware/errorHandler'
 import dotenv from 'dotenv'
@@ -41,10 +42,13 @@ app.use(rateLimiter({
 }))
 
 // view engine setup
-app.set('views', path.join(__dirname, '../views'));
-app.set('view engine', 'jade');
+// app.set('views', path.join(`${__dirname}/../`, 'views'));
+app.set('views', path.join(__dirname, '../', 'views'));
+app.set('view engine', 'ejs');
 
-
+app.get('/', (req: Request, res: Response) => {
+  res.render('home');
+}); 
 
 console.log(process.env.NODE_ENV)
 if(process.env.NODE_ENV === 'test'){
@@ -53,11 +57,13 @@ if(process.env.NODE_ENV === 'test'){
 else{
   connectDB()
 }
-app.get('/', (req:any,res:any)=>{
-  res.send({data:'api working'})
-})
-app.use('/api/v1/auth', authRouter)
-app.use('/api/v1/balance', authenticationUser, balanceRouter)
+// app.get('/', (req:any,res:any)=>{
+//   res.send({data:'api working'})
+// })
+
+// app.use('/', homeRouter);
+app.use('/api/v1/auth', authRouter);
+app.use('/api/v1/balance', authenticationUser, balanceRouter);
 app.use('/api/v1/transactions', authenticationUser, indexRouter);
 // app.use('api/v1/users', authenticationUser, usersRouter);
 
